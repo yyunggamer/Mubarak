@@ -47,11 +47,13 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh '''
-                    . venv/bin/activate
-	            export PYTHONPATH=$PYTHONPATH:.
-                    pytest tests/ --disable-warnings --maxfail=3 --junitxml=results.xml
-                '''
+		withPythonEnv('/usr/bin/python3'){
+                	sh '''
+                    	. venv/bin/activate
+	            	export PYTHONPATH=$PYTHONPATH:.
+                    	pytest tests/ --disable-warnings --maxfail=3 --junitxml=results.xml
+                	'''
+		}
             }
             post {
                 always {
