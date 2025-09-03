@@ -49,6 +49,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
+	            export PYTHONPATH=$PYTHONPATH:.
                     pytest tests/ --disable-warnings --maxfail=3 --junitxml=results.xml
                 '''
             }
