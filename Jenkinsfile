@@ -18,8 +18,8 @@ pipeline {
         stage('Install dependencies') {
             steps {
                 sh '''
-                    ${PYTHON} -m venv venv
-                    . venv/bin/activate
+                   # ${PYTHON} -m venv venv
+                    #. venv/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
                     pip install flake8 pytest
