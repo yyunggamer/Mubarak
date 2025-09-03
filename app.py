@@ -8,6 +8,7 @@ app = Flask(__name__)
 def home():
     return jsonify(message="Hello from Flask running in an Alpine-based Docker container!")
 
+
 # Another example endpoint
 @app.route("/health")
 def health():
