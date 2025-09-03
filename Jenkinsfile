@@ -17,7 +17,7 @@ pipeline {
 
         stage('Install dependencies') {
             steps {
-		withPythonEnv('python'){
+		withPythonEnv('/usr/bin/python3'){
                		sh '''
                   	 # ${PYTHON} -m venv venv
                    	 #. venv/bin/activate
