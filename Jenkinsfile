@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sh '''
                     . venv/bin/activate
-                    pytest --disable-warnings --maxfail=3 --junitxml=results.xml
+                    pytest tests/ --disable-warnings --maxfail=3 --junitxml=results.xml
                 '''
             }
             post {
