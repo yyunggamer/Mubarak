@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -19,12 +20,12 @@ pipeline {
             steps {
 		withPythonEnv('/usr/bin/python3'){
                		sh '''
-                  	 # ${PYTHON} -m venv venv
-                   	 #. venv/bin/activate
-                  	 # pip install --upgrade pip
-                   	 pip install -r requirements.txt
-                    	 pip install flake8 pytest
-                	 '''
+                  	  ${PYTHON} -m venv venv
+                   	  . venv/bin/activate
+                  	  pip install --upgrade pip
+                   	  pip install -r requirements.txt
+                    	  pip install flake8 pytest
+                	  '''
 		}
             }
         }
@@ -32,7 +33,7 @@ pipeline {
         stage('Lint') {
             steps {
                 sh '''
-#                    . venv/bin/activate
+                    . venv/bin/activate
                     flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
                     flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics
                 '''
