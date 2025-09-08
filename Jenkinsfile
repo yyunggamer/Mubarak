@@ -65,7 +65,7 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${BUILD_NUMBER} ."
+                sh "docker build -t ${APP_IMAGE}:${BUILD_NUMBER} ."
             }
         }
 
@@ -76,7 +76,7 @@ pipeline {
                     sh '''
                         whoami
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
+                        docker tag ${APP_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
                         docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
                         docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest
                         docker push ${DOCKER_IMAGE}:latest
