@@ -20,6 +20,7 @@ pipeline {
             steps {
 		withPythonEnv('/usr/bin/python3'){
                		sh '''
+                  	  whoami
                   	  ${PYTHON} -m venv venv
                    	  . venv/bin/activate
                   	  pip install --upgrade pip
@@ -73,6 +74,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
+                        whoami
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
                         docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
                         docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest
