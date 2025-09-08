@@ -69,9 +69,9 @@ pipeline {
         }
 
         stage('Docker Push') {
-            when {
-                branch 'main'
-            }
+            #when {
+                #branch 'main'
+            #}
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     sh '''
