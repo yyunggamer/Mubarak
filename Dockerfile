@@ -1,7 +1,7 @@
 # 1) Use Alpine-based Python image
 FROM python:3.11-alpine
 
-# 2) Environment variables (no pyc files, unbuffered logs)
+#  2) Environment variables (no pyc files, unbuffered logs)
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
