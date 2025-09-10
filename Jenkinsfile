@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         APP_NAME = "my-python-app"
-        DOCKER_REGISTRY = "j3y3"   // replace with your Docker Hub username or private registry
+        DOCKER_REGISTRY = "Docker_Username"   // replace with your Docker Hub username or private registry
         APP_IMAGE = "${DOCKER_REGISTRY}/${APP_NAME}"
         DOCKER_IMAGE = "${DOCKER_REGISTRY}/${APP_NAME}"
         PYTHON = "python3"
@@ -77,7 +77,7 @@ pipeline {
                     sh '''
                         whoami
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker tag ${APP_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
+                        docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:${BUILD_NUMBER}
                         docker push ${DOCKER_IMAGE}:${BUILD_NUMBER}
                         docker tag ${DOCKER_IMAGE}:${BUILD_NUMBER} ${DOCKER_IMAGE}:latest
                         docker push ${DOCKER_IMAGE}:latest
