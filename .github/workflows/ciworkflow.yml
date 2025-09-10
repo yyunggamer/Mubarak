@@ -30,11 +30,13 @@ jobs:
       - name: Lint
         run: |
           source venv/bin/activate
+          
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=88 --statistics --exclude=venv,.venv,__pycache__
 
       - name: Run tests
         run: |
           source venv/bin/activate
+          export PYTHONPATH=.
           pytest tests/ --disable-warnings --maxfail=3 --junitxml=results.xml
 
       - name: Upload test results
